@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node app/index.js",
     "start:dev": "nodemon app/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --no-cache",
+    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --no-cache --watchAll",
+    "test:coverage": "NODE_OPTIONS=--experimental-vm-modules jest --no-cache --coverage __tests__/unit"
   },
   "type": "module",
   "engines": {
@@ -15,5 +17,8 @@
   "dependencies": {
     "pino": "7.8.0",
     "pino-pretty": "7.5.3"
+  },
+  "devDependencies": {
+    "jest": "27"
   }
 }
