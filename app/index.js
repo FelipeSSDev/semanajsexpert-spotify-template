@@ -1,8 +1,9 @@
+import config from "./config/index.js";
 import server from "./http/server/index.js";
 import { logger } from "./util/logger.js";
 
-const PORT = 3000;
+const { port } = config;
 
-server.listen(PORT).on("listening", () => {
-  logger.info(`server running on port ${PORT}`);
+server.listen(port).on("listening", () => {
+  logger.info(`server running on port ${port}`);
 });
