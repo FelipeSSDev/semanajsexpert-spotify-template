@@ -1,0 +1,10 @@
+{
+  "name": "spotify-radio",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": "17"
+  }
+}
