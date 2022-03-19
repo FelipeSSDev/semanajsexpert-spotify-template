@@ -1,13 +1,19 @@
-import { logger } from "../../util/index.js";
+import { logger, errorHandler } from "../../util/index.js";
 import routesDictionary from "./dictionary.js";
 
 const routes = async (request, response) => {
   const { method, url } = request;
-  const existingMethod = routesDictionary[url]?.[method];
+  const existingUrl = routesDictionary[url];
+  const existingMethod = existingUrl?.[method];
 
-  if (!existingMethod) {
+  if (!existingUrl) {
+    if (method === "GET") {
+      return routesDictionary.staticFiles.GET(request, response);
+    }
+
     logger.error(`${method} ${url} not found`);
 
+    response.writeHead(404);
     return response.end();
   }
 
@@ -16,6 +22,6 @@ const routes = async (request, response) => {
 
 export const handler = (request, response) => {
   return routes(request, response).catch((error) =>
-    logger.error(`Error: ${error.stack}`)
+    errorHandler(error, response)
   );
 };
