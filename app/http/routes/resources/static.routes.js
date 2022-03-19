@@ -14,7 +14,10 @@ const index = async (request, response) => {
 
   const { stream } = await streamController.getFileStream(url);
 
-  response.writeHead(200, CONTENT_TYPE[type]);
+  const contentType = CONTENT_TYPE[type];
+
+  if (contentType) response.writeHead(200, CONTENT_TYPE[type]);
+
   stream.pipe(response);
 };
 
