@@ -3,6 +3,11 @@
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "node app/index.js",
+    "start:dev": "nodemon app/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "type": "module",
   "engines": {
     "node": "17"
